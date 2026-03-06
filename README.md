@@ -1,1 +1,1 @@
-How to install windows apps on slackware 15
+Windows apps on slackware 15
