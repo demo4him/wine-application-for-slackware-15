@@ -1,3 +1,43 @@
+INSTALL ACTIVADED OFFICE 365 ON LINUX SLACKWARE 15
+
+##I modified and adapted tutorial for slackware based on and ispired by formateando (https://www.youtube.com/@formateando)
+
+Instructions for Slackware 15.0
+
+##First,
+Download:
+wget https://sourceforge.net/projects/slackware-ms/files/winecx-24.0.7.tgz
+wget https://sourceforge.net/projects/slackware-ms/files/wine-9.13-x86_64-1alien.txz
+wget https://sourceforge.net/projects/slackware-ms/files/FAudio-21.12-x86_64-1alien.tgz 
+#Run the following command to install as root
+installpkg *.t?z
+
+##Install 32-bit dependencies and others updates
+
+1.Download and install multilib from alienbob repository
+https://slackware.uk/people/alien/multilib/15.0/
+
+2. Download and update only glibc, aaa_glibc-solibs, binutils  
+https://slackware.uk/slackware/slackware64-15.0/testing/packages/binutils-gcc-glibc/
+
+#Run the following command to install as root
+upgradepkg --install-new --reinstall */*.txz
+
+3. install msitools, winetricks, cabextract, webcore-fonts,7zip, p7zip, zenity
+## sbopkg 
+git nano https://github.com/sbopkg/sbopkg/releases/download/0.38.3/sbopkg-0.38.3-noarch-1_wsr.tgz
+
+4. Package: winecx version: 24.0.7
+Description: Wine CrossOver (Gcenx) build 24.0.7 installed on /opt/winecx
+Check depends:libvulkan1, libasound2, libx11-6, libfreetype6, libcups2, libgnutls30 # use slackpkg file-search for each one
+
+5. Verify the installation. If you get wine version - no glibc error - you are on the road again!!! :)
+
+/opt/winecx/bin/wine --version
+
+*INSTALLING OFFICE*
+
+
 #Save the provided file in the Downloads folder
 
 https://drive.google.com/file/d/10-Cs7OB0ovsj9aCKGs0-pq_xsQnJf7mZ
