@@ -55,16 +55,16 @@ cd "$HOME/Downloads/MSO365-English-"
 # Copy the Office 365 prefix to Home
 cp -r .Microsoft_Office_365 "$HOME"
 
-# Copy icons
+# Copy icons - run everything at once
 sudo mkdir -p /usr/share/icons/hicolor/256x256/apps
 sudo cp "$HOME/Downloads/MSO365-English-/Office365Icons/"*365.svg /usr/share/icons/hicolor/256x256/apps/
 sudo gtk-update-icon-cache /usr/share/icons/hicolor/
 
-# Create launcher folders
+# Create launcher folders - run everything at once
 sudo mkdir -p /opt/winecx/launchers
 sudo chmod 755 /opt/winecx/launchers
 
-# Create launchers (run the entire command)
+# Create launchers run the entire command at once
 
 create_launcher() {
 local name="$1"
@@ -179,15 +179,15 @@ Icon=Publisher365
 Categories=Office;Publishing;
 MimeType=application/x-mspublisher;
 EOF
-
+*********************************************************
 # Update application database
 sudo update-desktop-database /usr/share/applications
 
-# Fix user permissions
+# Fix user permissions - run everything at once
 sudo chown -R "$USER:$USER" ~/.Microsoft_Office_365
 sudo chmod -R u+rwX ~/.Microsoft_Office_365
 
-# Rebuild drive/folder links
+# Rebuild drive/folder links - run everything at once
 rm -rf "$HOME/.Microsoft_Office_365/dosdevices"
 mkdir -p "$HOME/.Microsoft_Office_365/dosdevices"
 ln -s ../drive_c "$HOME/.Microsoft_Office_365/dosdevices/c:"
@@ -197,7 +197,7 @@ ln -s /dev/null "$HOME/.Microsoft_Office_365/dosdevices/z::"
 ln -s /media "$HOME/.Microsoft_Office_365/dosdevices/d:"
 ln -s "$HOME" "$HOME/.Microsoft_Office_365/dosdevices/e:"
 
-# Rebuild user folders
+# Rebuild user folders - run everything at once
 mkdir -p ~/.Microsoft_Office_365/drive_c/users/crossover
 mkdir -p ~/.Microsoft_Office_365/drive_c/users/crossover/AppData/Local
 mkdir -p ~/.Microsoft_Office_365/drive_c/users/crossover/AppData/Roaming
@@ -205,14 +205,14 @@ mkdir -p ~/.Microsoft_Office_365/drive_c/users/crossover/AppData/Roaming
 # Update prefix
 WINEPREFIX=$HOME/.Microsoft_Office_365 /opt/winecx/bin/wine wineboot -u
 
-# Install fonts
+# Install fonts - run everything at once
 WINEPREFIX=$HOME/.Microsoft_Office_365 winetricks -q corefonts
 WINEPREFIX=$HOME/.Microsoft_Office_365 winetricks -q fontsmooth=rgb
 WINEPREFIX=$HOME/.Microsoft_Office_365 winetricks -q fontsmooth-gray
 WINEPREFIX=$HOME/.Microsoft_Office_365 winetricks -q tahoma
 WINEPREFIX=$HOME/.Microsoft_Office_365 winetricks -q fakejapanese
 
-# Restart prefix
+# Restart prefix - run everything at once
 pkill -9 -f wineserver || true
 pkill -9 -f wine || true
 pkill -9 -f EXCEL.EXE || true
@@ -226,13 +226,13 @@ pkill -9 -f OfficeClickToRun.exe || true
 
 WINEPREFIX=$HOME/.Microsoft_Office_365 /opt/winecx/bin/wineserver -k
 WINEPREFIX=$HOME/.Microsoft_Office_365 /opt/winecx/bin/wineserver -w
-
-# Copy required Office 365 fonts
+***********************************************************************
+# Copy required Office 365 fonts - run everything at once
 mkdir -p $HOME/.Microsoft_Office_365/drive_c/windows/Fonts
 cd "$HOME/Downloads/MSO365-English-/Fuentes Office365"
 cp *.ttf *.TTF *.ttc $HOME/.Microsoft_Office_365/drive_c/windows/Fonts
-
-# Update installed font registry (run the whole command)
+**********************************************************************
+# Update installed font registry - run the whole command
 
 WINEPREFIX=$HOME/.Microsoft_Office_365 bash -c '
 FONTDIR="$WINEPREFIX/drive_c/windows/Fonts"
@@ -255,6 +255,6 @@ done
 
 /opt/winecx/bin/wine regedit "$REGFILE"
 '
-
+*******************************************************************************8
 
 
