@@ -186,7 +186,7 @@ sudo update-desktop-database /usr/share/applications
 # Fix user permissions - run everything at once
 sudo chown -R "$USER:$USER" ~/.Microsoft_Office_365
 sudo chmod -R u+rwX ~/.Microsoft_Office_365
-
+**************************************************************
 # Rebuild drive/folder links - run everything at once
 rm -rf "$HOME/.Microsoft_Office_365/dosdevices"
 mkdir -p "$HOME/.Microsoft_Office_365/dosdevices"
